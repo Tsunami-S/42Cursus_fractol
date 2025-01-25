@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:47:36 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/25 16:50:21 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/25 20:24:40 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /* window */
 # define WIDTH 800
 # define HEIGHT 800
+# define INIT_COMPLEX_RANGE 2.0
 
 /* event */
 # define MOVEMENT_SIZE 42
@@ -34,6 +35,7 @@
 # define RED_INTENS 9
 # define BLUE_INTENS 5
 # define GREEN_INTENS 3
+# define MAX_ITER 42
 
 /* strcmp */
 # define SAME 0

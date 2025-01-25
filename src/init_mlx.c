@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:44:19 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/25 15:09:05 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/25 21:20:23 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	init_mlx_image(t_fractol *fractol)
 	if (!fractol->image_ptr)
 		destroy_fractol(fractol);
 	fractol->data_addr = mlx_get_data_addr(fractol->image_ptr,
-			&fractol->bits_pixel, &fractol->bits_line, &fractol->endian);
+			&fractol->bits_per_pixel, &fractol->line_size, &fractol->endian);
 }
 
 void	init_mlx(t_fractol *fractol)

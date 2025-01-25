@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:37:15 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/25 15:20:16 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/25 21:20:09 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	init_fractol_data(t_fractol *fractol)
 	fractol->window = NULL;
 	fractol->image_ptr = NULL;
 	fractol->data_addr = NULL;
-	fractol->max_iter = 42;
-	fractol->max.r = 2.0;
-	fractol->min.r = -2.0;
-	fractol->max.i = 2.0;
-	fractol->min.i = -2.0;
-	fractol->bits_pixel = 0;
-	fractol->bits_line = 0;
+	fractol->max_iter = MAX_ITER;
+	fractol->max.r = INIT_COMPLEX_RANGE;
+	fractol->min.r = -1 * INIT_COMPLEX_RANGE;
+	fractol->max.i = INIT_COMPLEX_RANGE;
+	fractol->min.i = -1 * INIT_COMPLEX_RANGE;
+	fractol->bits_per_pixel = 0;
+	fractol->line_size = 0;
 	fractol->endian = 0;
 }
 

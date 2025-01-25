@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:28:42 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/25 16:56:38 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/25 21:19:53 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	put_color(t_fractol *fractol, double iter_ratio, int x, int y)
 		blue = (int)(COLOR_MAX * iter_ratio * BLUE_INTENS) % (COLOR_MAX + 1);
 		color = (red * RED_SHIFT) + (green * GREEN_SHIFT) + blue;
 	}
-	index = (y * fractol->bits_line) + (x * fractol->bits_pixel / 8);
+	index = (y * fractol->line_size) + (x * fractol->bits_per_pixel / 8);
 	*(int *)(fractol->data_addr + index) = color;
 }
 

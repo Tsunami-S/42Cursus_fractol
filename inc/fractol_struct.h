@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:47:42 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/25 16:47:44 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/25 21:20:37 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_fractol
 	void			*window;
 	void			*image_ptr;
 	char			*data_addr;
-	int				bits_pixel;
-	int				bits_line;
+	int				bits_per_pixel;
+	int				line_size;
 	int				endian;
 	double			max_iter;
 	t_complex		julia;
