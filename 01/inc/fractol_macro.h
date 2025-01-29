@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:47:36 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/29 12:59:58 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/29 23:18:10 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 
 /* strcmp */
 # define SAME 0
+
+/* get_next_line */
+# define BUFFER_SIZE 42
+
 
 typedef enum e_fractol_type
 {
