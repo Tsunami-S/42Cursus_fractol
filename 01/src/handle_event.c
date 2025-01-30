@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   handle_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:48:02 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/29 13:31:39 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:52:37 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_shift(t_fractol *fractol, t_act act, int keycode)
+void	color_shift(t_fractol *fractol, int keycode)
 {
-	if (act == UP)
-	{
-		if (keycode == XK_R && RED_INTENS < COLOR_MAX)
-			fractol->intens.r++;
-		else if (keycode == XK_G && GREEN_INTENS < COLOR_MAX)
-			fractol->intens.g++;
-		else if (keycode == XK_B && BLUE_INTENS < COLOR_MAX)
-			fractol->intens.b++;
-	}
-	else if (act == DOWN)
-	{
-		if (keycode == XK_r && RED_INTENS > 0)
-			fractol->intens.r++;
-		else if (keycode == XK_g && GREEN_INTENS > 0)
-			fractol->intens.g++;
-		else if (keycode == XK_b && BLUE_INTENS > 0)
-			fractol->intens.b++;
-	}
+	if (keycode == XK_r && fractol->intens.r > COLOR_MIN)
+		fractol->intens.r = (fractol->intens.r + 1) % (COLOR_MAX + 1);
+	else if (keycode == XK_g && fractol->intens.g > COLOR_MIN)
+		fractol->intens.g = (fractol->intens.g + 1) % (COLOR_MAX + 1);
+	else if (keycode == XK_b && fractol->intens.b > COLOR_MIN)
+		fractol->intens.b = (fractol->intens.b + 1) % (COLOR_MAX + 1);
 }
 
 void	manage_max_iter(t_fractol *fractol, t_act act)
@@ -41,7 +29,6 @@ void	manage_max_iter(t_fractol *fractol, t_act act)
 	if (act == UP)
 	{
 		if (fractol->max_iter < ITER_UPPER_LIMIT)
-			// fractol->max_iter *= 1.05;
 			fractol->max_iter += 2;
 		else
 			out_count++;
@@ -51,7 +38,6 @@ void	manage_max_iter(t_fractol *fractol, t_act act)
 		if (out_count)
 			out_count--;
 		else if (fractol->max_iter > ITER_LOWER_LIMIT)
-			// fractol->max_iter /= 1.03;
 			fractol->max_iter -= 2;
 	}
 }

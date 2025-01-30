@@ -6,11 +6,72 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:43 by tssaito           #+#    #+#             */
-/*   Updated: 2024/12/13 22:58:17 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:13:19 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "fractol.h"
+
+static void	ft_init(t_line *ans)
+{
+	ans->line = NULL;
+	ans->len = 1;
+	ans->m_size = 0;
+}
+
+static int	ft_getchar(int fd, t_buf *buf)
+{
+	char	c;
+
+	if (buf->len < 1)
+	{
+		buf->len = read(fd, buf->buf, BUFFER_SIZE);
+		if (buf->len == -1)
+			return (READ_ERROR);
+		if (buf->len == 0)
+			return (EOF);
+		buf->save = buf->buf;
+	}
+	buf->len--;
+	c = *buf->save;
+	buf->save++;
+	return (c);
+}
+
+static void	add_char(char *ans, char c, size_t len)
+{
+	ans[len - 1] = c;
+	ans[len] = '\0';
+}
+
+static int	ft_make_ans(char c, t_line *ans)
+{
+	char	*tmp;
+
+	if (!ans->m_size)
+	{
+		ans->m_size = BUFFER_SIZE + 1;
+		ans->line = (char *)malloc(sizeof(char) * ans->m_size);
+		if (!ans->line)
+			return (MALLOC_ERROR);
+	}
+	else if (ans->len + 1 > ans->m_size)
+	{
+		if (ans->m_size > SIZE_MAX / 2)
+			ans->m_size = SIZE_MAX;
+		else
+			ans->m_size *= 2;
+		tmp = (char *)malloc(sizeof(char) * ans->m_size);
+		if (!tmp)
+			return (free(ans->line), MALLOC_ERROR);
+		ft_memcpy(tmp, ans->line, ans->len);
+		free(ans->line);
+		ans->line = tmp;
+	}
+	add_char(ans->line, c, ans->len);
+	ans->len++;
+	return (0);
+}
 
 char	*get_next_line(int fd)
 {
@@ -39,28 +100,3 @@ char	*get_next_line(int fd)
 	}
 	return (ans.line);
 }
-
-//# include <fcntl.h>
-//int	main(int argc, char **argv)
-//{
-//	char	*line;
-//	int		fd;
-//
-//	(void)argc;
-//	fd = open(argv[1], O_RDONLY);
-//	while (1)
-//	{
-//		line = get_next_line(fd);
-//		if (!line)
-//		{
-//			printf("line: NULL\n");
-//			printf("=================\n");
-//			break;
-//		}
-//		printf("line: %s", line);
-//		printf("=================\n");
-//		free(line);
-//	}
-//	close(fd);
-//	return (0);
-//}

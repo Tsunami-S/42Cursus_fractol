@@ -10,7 +10,7 @@ MLXDIR = mlx
 SRCS_NAME = main.c \
 	init_fractol_type.c init_julia_param.c init_mlx.c init_event.c \
 	handle_event.c render.c \
-	ft_utils.c
+	ft_utils.c get_next_line.c
 SRCS = $(addprefix $(SRCDIR)/, $(SRCS_NAME))
 
 # objects/archives

@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:31:29 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/29 14:31:08 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/30 19:08:40 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	destroy_fractol(t_fractol *fractol)
 {
-	if (fractol->image_ptr)
-		mlx_destroy_image(fractol->mlx_ptr, fractol->image_ptr);
-	if (fractol->window)
-		mlx_destroy_window(fractol->mlx_ptr, fractol->window);
-	if (fractol->mlx_ptr)
+	if (fractol->ptr.image)
+		mlx_destroy_image(fractol->ptr.mlx, fractol->ptr.image);
+	if (fractol->ptr.window)
+		mlx_destroy_window(fractol->ptr.mlx, fractol->ptr.window);
+	if (fractol->ptr.mlx)
 	{
-		mlx_destroy_display(fractol->mlx_ptr);
-		free(fractol->mlx_ptr);
+		mlx_destroy_display(fractol->ptr.mlx);
+		free(fractol->ptr.mlx);
 	}
 	exit(EXIT_SUCCESS);
 }
@@ -38,17 +38,15 @@ static int	key_hook(int keycode, t_fractol *fractol)
 		move(fractol, RIGHT);
 	else if (keycode == XK_Left || keycode == XK_h)
 		move(fractol, LEFT);
-	else if (keycode == XK_i || keycode == XK_I)
+	else if (keycode == XK_i)
 		zoom(fractol, UP, 0.5, 0.5);
-	else if (keycode == XK_o || keycode == XK_O)
+	else if (keycode == XK_o)
 		zoom(fractol, DOWN, 0.5, 0.5);
-	else if (keycode == XK_R || keycode == XK_G || keycode == XK_B)
-		color_shift(fractol, UP, keycode);
 	else if (keycode == XK_r || keycode == XK_g || keycode == XK_b)
-		color_shift(fractol, DOWN, keycode);
-	else if (keycode == XK_p || keycode == XK_P)
+		color_shift(fractol, keycode);
+	else if (keycode == XK_p)
 		manage_max_iter(fractol, UP);
-	else if (keycode == XK_r || keycode == XK_R)
+	else if (keycode == XK_r)
 		manage_max_iter(fractol, DOWN);
 	render_fractol(fractol);
 	return (0);
@@ -69,9 +67,9 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 	return (0);
 }
 
-void	init_event(t_fractol *fractol)
+void	init_mlx_hook(t_fractol *fractol)
 {
-	mlx_key_hook(fractol->window, key_hook, fractol);
-	mlx_mouse_hook(fractol->window, mouse_hook, fractol);
-	mlx_hook(fractol->window, DestroyNotify, 0, destroy_fractol, fractol);
+	mlx_key_hook(fractol->ptr.window, key_hook, fractol);
+	mlx_mouse_hook(fractol->ptr.window, mouse_hook, fractol);
+	mlx_hook(fractol->ptr.window, DestroyNotify, 0, destroy_fractol, fractol);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_fractol.c                                     :+:      :+:    :+:   */
+/*   init_fractol_type.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:37:15 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/29 14:48:37 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/30 19:06:07 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	exit_param_error(void)
 
 static void	init_fractol_data(t_fractol *fractol)
 {
-	fractol->mlx_ptr = NULL;
-	fractol->window = NULL;
-	fractol->image_ptr = NULL;
+	fractol->ptr.mlx = NULL;
+	fractol->ptr.window = NULL;
+	fractol->ptr.image = NULL;
 	fractol->data_addr = NULL;
 	fractol->max_iter = MAX_ITER;
 	fractol->max.r = INIT_COMPLEX_RANGE;
@@ -32,6 +32,12 @@ static void	init_fractol_data(t_fractol *fractol)
 	fractol->bits_per_pixel = 0;
 	fractol->line_size = 0;
 	fractol->endian = 0;
+	fractol->julia.r = -3;
+	fractol->julia.i = -3;
+}
+
+static void	init_color_intens(t_fractol *fractol)
+{
 	if (fractol->type == BURNINGSHIP)
 	{
 		fractol->intens.r = 9;
@@ -45,11 +51,12 @@ static void	init_fractol_data(t_fractol *fractol)
 		fractol->intens.b = 5;
 	}
 }
+
 void	init_fractol(int argc, char **argv, t_fractol *fractol)
 {
 	if (argc != 2)
 		exit_param_error();
-	if (ft_strncmp("mandelbrot", argv[1], 11) == SAME)
+	else if (ft_strncmp("mandelbrot", argv[1], 11) == SAME)
 		fractol->type = MANDELBROT;
 	else if (ft_strncmp("julia", argv[1], 6) == SAME)
 		fractol->type = JULIA;
@@ -58,4 +65,5 @@ void	init_fractol(int argc, char **argv, t_fractol *fractol)
 	else
 		exit_param_error();
 	init_fractol_data(fractol);
+	init_color_intens(fractol);
 }

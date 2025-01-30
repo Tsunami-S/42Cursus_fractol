@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:47:36 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/29 23:18:10 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:13:58 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,19 @@
 # define WHITE 0xFFFFFF
 
 /* calculate color */
+# define COLOR_MIN 0
 # define COLOR_MAX 255
-# define RED_SHIFT 65536
-# define GREEN_SHIFT 256
-# define RED_INTENS 9
-# define GREEN_INTENS 3
-# define BLUE_INTENS 5
 # define MAX_ITER 42
+# define GREEN_SHIFT 256
+# define RED_SHIFT 65536
 
 /* strcmp */
 # define SAME 0
 
 /* get_next_line */
-# define BUFFER_SIZE 42
-
+# define BUFFER_SIZE 100
+# define READ_ERROR -1
+# define MALLOC_ERROR -2
 
 typedef enum e_fractol_type
 {
@@ -54,9 +53,7 @@ typedef enum e_fractol_type
 typedef enum e_error
 {
 	SUCCESS,
-	INVALID_PARAM,
-	INVALID_PARAM_FOR_JULIA,
-	READ_ERROR
+	ERROR
 }	t_error;
 
 typedef enum e_act
