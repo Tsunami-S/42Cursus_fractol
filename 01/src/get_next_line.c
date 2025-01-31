@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:43 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 16:13:19 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:12:44 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_getchar(int fd, t_buf *buf)
 	if (buf->len < 1)
 	{
 		buf->len = read(fd, buf->buf, BUFFER_SIZE);
-		if (buf->len == -1)
+		if (buf->len == READ_ERROR)
 			return (READ_ERROR);
 		if (buf->len == 0)
 			return (EOF);
