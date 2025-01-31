@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:28:42 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 19:08:53 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:14:42 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,6 @@ void	render_fractol(t_fractol *fractol)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fractol->ptr.mlx, fractol->ptr.window,
-		fractol->ptr.image, 0, 0);
+	mlx_put_image_to_window(fractol->ptr.mlx, fractol->ptr.win,
+		fractol->ptr.img, 0, 0);
 }

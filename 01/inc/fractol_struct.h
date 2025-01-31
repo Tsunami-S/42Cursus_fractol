@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:47:42 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 19:07:53 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:08:32 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_intens
 typedef struct s_ptr
 {
 	void			*mlx;
-	void			*window;
-	void			*image;
+	void			*win;
+	void			*img;
 }					t_ptr;
 
 typedef struct s_fractol

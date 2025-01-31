@@ -7,11 +7,11 @@ OBJDIR = obj
 MLXDIR = mlx
 
 # sources
-SRCS_NAME = main.c \
+SRCS = main.c \
 	init_fractol_type.c init_julia_param.c init_mlx.c init_event.c \
 	handle_event.c render.c \
 	ft_utils.c get_next_line.c
-SRCS = $(addprefix $(SRCDIR)/, $(SRCS_NAME))
+# SRCS = $(addprefix $(SRCDIR)/, $(SRCS_NAME))
 
 # objects/archives
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
@@ -40,7 +40,7 @@ re: fclean all
 
 bonus: all
 
-$(OBJDIR)/%.o:%.c
+$(OBJDIR)/%.o:$(SRCDIR)/%.c
 	mkdir -p $(@D)
 	$(CC) $(WFLAG) $(IFLAG) -c $< -o $@
 

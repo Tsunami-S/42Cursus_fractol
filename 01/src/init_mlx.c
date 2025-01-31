@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:44:19 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 19:08:07 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:14:30 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	init_mlx_window(t_fractol *fractol)
 		type = "JULIA";
 	else
 		type = "BURNINGSHIP";
-	fractol->ptr.window = mlx_new_window(fractol->ptr.mlx, WIDTH, HEIGHT, type);
-	if (!fractol->ptr.window)
+	fractol->ptr.win = mlx_new_window(fractol->ptr.mlx, WIDTH, HEIGHT, type);
+	if (!fractol->ptr.win)
 	{
 		mlx_destroy_display(fractol->ptr.mlx);
 		free(fractol->ptr.mlx);
@@ -46,16 +46,16 @@ static void	init_mlx_window(t_fractol *fractol)
 
 static void	init_mlx_image(t_fractol *fractol)
 {
-	fractol->ptr.image = mlx_new_image(fractol->ptr.mlx, WIDTH, HEIGHT);
-	if (!fractol->ptr.image)
+	fractol->ptr.img = mlx_new_image(fractol->ptr.mlx, WIDTH, HEIGHT);
+	if (!fractol->ptr.img)
 	{
-		mlx_destroy_image(fractol->ptr.mlx, fractol->ptr.image);
-		mlx_destroy_window(fractol->ptr.mlx, fractol->ptr.window);
+		mlx_destroy_image(fractol->ptr.mlx, fractol->ptr.img);
+		mlx_destroy_window(fractol->ptr.mlx, fractol->ptr.win);
 		mlx_destroy_display(fractol->ptr.mlx);
 		free(fractol->ptr.mlx);
 		exit_malloc_error();
 	}
-	fractol->data_addr = mlx_get_data_addr(fractol->ptr.image,
+	fractol->data_addr = mlx_get_data_addr(fractol->ptr.img,
 			&fractol->bits_per_pixel, &fractol->line_size, &fractol->endian);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:31:29 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 19:08:40 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:31:44 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	destroy_fractol(t_fractol *fractol)
 {
-	if (fractol->ptr.image)
-		mlx_destroy_image(fractol->ptr.mlx, fractol->ptr.image);
-	if (fractol->ptr.window)
-		mlx_destroy_window(fractol->ptr.mlx, fractol->ptr.window);
+	if (fractol->ptr.img)
+		mlx_destroy_image(fractol->ptr.mlx, fractol->ptr.img);
+	if (fractol->ptr.win)
+		mlx_destroy_window(fractol->ptr.mlx, fractol->ptr.win);
 	if (fractol->ptr.mlx)
 	{
 		mlx_destroy_display(fractol->ptr.mlx);
@@ -38,15 +38,15 @@ static int	key_hook(int keycode, t_fractol *fractol)
 		move(fractol, RIGHT);
 	else if (keycode == XK_Left || keycode == XK_h)
 		move(fractol, LEFT);
-	else if (keycode == XK_i)
+	else if (keycode == XK_u)
 		zoom(fractol, UP, 0.5, 0.5);
-	else if (keycode == XK_o)
+	else if (keycode == XK_d)
 		zoom(fractol, DOWN, 0.5, 0.5);
 	else if (keycode == XK_r || keycode == XK_g || keycode == XK_b)
 		color_shift(fractol, keycode);
 	else if (keycode == XK_p)
 		manage_max_iter(fractol, UP);
-	else if (keycode == XK_r)
+	else if (keycode == XK_s)
 		manage_max_iter(fractol, DOWN);
 	render_fractol(fractol);
 	return (0);
@@ -69,7 +69,7 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 
 void	init_mlx_hook(t_fractol *fractol)
 {
-	mlx_key_hook(fractol->ptr.window, key_hook, fractol);
-	mlx_mouse_hook(fractol->ptr.window, mouse_hook, fractol);
-	mlx_hook(fractol->ptr.window, DestroyNotify, 0, destroy_fractol, fractol);
+	mlx_key_hook(fractol->ptr.win, key_hook, fractol);
+	mlx_mouse_hook(fractol->ptr.win, mouse_hook, fractol);
+	mlx_hook(fractol->ptr.win, DestroyNotify, 0, destroy_fractol, fractol);
 }

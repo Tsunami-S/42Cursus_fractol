@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:37:15 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/30 19:06:07 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:09:56 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	exit_param_error(void)
 static void	init_fractol_data(t_fractol *fractol)
 {
 	fractol->ptr.mlx = NULL;
-	fractol->ptr.window = NULL;
-	fractol->ptr.image = NULL;
+	fractol->ptr.win = NULL;
+	fractol->ptr.img = NULL;
 	fractol->data_addr = NULL;
 	fractol->max_iter = MAX_ITER;
 	fractol->max.r = INIT_COMPLEX_RANGE;
