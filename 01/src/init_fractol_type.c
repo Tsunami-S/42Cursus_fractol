@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:37:15 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/31 18:09:56 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:05:06 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	init_fractol_data(t_fractol *fractol)
 	fractol->bits_per_pixel = 0;
 	fractol->line_size = 0;
 	fractol->endian = 0;
-	fractol->julia.r = -3;
-	fractol->julia.i = -3;
 }
 
 static void	init_color_intens(t_fractol *fractol)
@@ -64,6 +62,8 @@ void	init_fractol(int argc, char **argv, t_fractol *fractol)
 		fractol->type = BURNINGSHIP;
 	else
 		exit_param_error();
+	if (fractol->type == JULIA)
+		init_julia_param(fractol);
 	init_fractol_data(fractol);
 	init_color_intens(fractol);
 }

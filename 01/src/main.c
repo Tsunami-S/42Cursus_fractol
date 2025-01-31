@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:35:38 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/31 12:48:21 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:03:39 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	main(int argc, char **argv)
 	t_fractol	fractol;
 
 	init_fractol(argc, argv, &fractol);
-	if (fractol.type == JULIA)
-		init_julia_param(&fractol);
 	init_mlx(&fractol);
 	init_mlx_hook(&fractol);
 	render_fractol(&fractol);
