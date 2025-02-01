@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:37:15 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 14:36:04 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:45:51 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	init_fractol_data(t_fractol *fractol)
 	fractol->line_size = 0;
 	fractol->endian = 0;
 	if (fractol->type == JULIA)
-		init_julia_param(fractol);
+		init_julia(fractol);
 }
 
 static void	init_color_intens(t_fractol *fractol)

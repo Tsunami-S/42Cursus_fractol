@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_julia_param.c                                 :+:      :+:    :+:   */
+/*   init_julia.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:09:54 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 14:36:25 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:47:15 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,39 +70,29 @@ static double	convert_params_to_double(char *str)
 	return (sign * ans / power);
 }
 
-static t_error	isvalid_julia_param(double n)
+static void	make_julia_coordinate(double *num)
 {
-	if (n < -2.0 || n > 2.0)
+	char	*str;
+
+	*num = -3;
+	while (1)
 	{
-		write(STDERR_FILENO, "julia needs 2 params between -2.0 and 2.0\n", 42);
-		return (ERROR);
+		str = get_next_line(STDIN_FILENO);
+		if (is_valid_param(str) == SUCCESS)
+			*num = convert_params_to_double(str);
+		free(str);
+		if (-2.0 <= *num || *num <= 2.0)
+			break ;
+		else
+			write(STDERR_FILENO, "Error! Please retry again!\n", 27);
 	}
-	return (SUCCESS);
 }
 
-void	init_julia_param(t_fractol *fractol)
+void	init_julia(t_fractol *fractol)
 {
-	char	*param_r;
-	char	*param_i;
-
-	fractol->julia.r = -3;
-	fractol->julia.i = -3;
 	indicate_julia_example();
-	while (isvalid_julia_param(fractol->julia.r) == ERROR)
-	{
-		write(STDOUT_FILENO, "Enter real coordinate\n", 22);
-		param_r = get_next_line(STDIN_FILENO);
-		if (is_valid_param(param_r) == SUCCESS)
-			fractol->julia.r = convert_params_to_double(param_r);
-		free(param_r);
-	}
-	while (isvalid_julia_param(fractol->julia.i) == ERROR)
-	{
-		write(STDOUT_FILENO, "Enter imaginary coordinate\n", 27);
-		param_i = get_next_line(STDIN_FILENO);
-		if (is_valid_param(param_i) == SUCCESS)
-			fractol->julia.i = convert_params_to_double(param_i);
-		free(param_i);
-	}
+	write(STDOUT_FILENO, "Enter real coordinate\n", 22);
+	make_julia_coordinate(&fractol->julia.r);
+	write(STDOUT_FILENO, "Enter imaginary coordinate\n", 27);
+	make_julia_coordinate(&fractol->julia.i);
 }
-

@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:43:44 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 14:13:16 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:46:17 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 /* fractol */
 void	init_fractol(int argc, char **argv, t_fractol *fractol);
-void	init_julia_param(t_fractol *fractol);
+void	init_julia(t_fractol *fractol);
 void	init_mlx(t_fractol *fractol);
 void	init_mlx_hook(t_fractol *fractol);
 void	render_fractol(t_fractol *fractol);
