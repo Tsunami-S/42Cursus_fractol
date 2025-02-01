@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:09:54 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/31 19:04:41 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:12:26 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	init_julia_param(t_fractol *fractol)
 
 	fractol->julia.r = -3;
 	fractol->julia.i = -3;
+	indicate_julia_example();
 	while (isvalid_julia_param(fractol->julia.r) == ERROR)
 	{
 		write(STDOUT_FILENO, "Enter real coordinate\n", 22);

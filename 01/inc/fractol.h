@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:43:44 by tssaito           #+#    #+#             */
-/*   Updated: 2025/01/31 18:07:37 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:13:16 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	color_shift(t_fractol *fractol, int keycode);
 void	zoom(t_fractol *fractol, t_act act, double ratio_i, double ratio_r);
 void	move(t_fractol *fractol, t_act act);
 void	manage_max_iter(t_fractol *fractol, t_act act);
+
+/* messages */
+void	indicate_julia_example(void);
+void	indicate_key_map(void);
 
 /* ft_utlis */
 int		ft_isdigit(int c);
