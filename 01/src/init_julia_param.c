@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:09:54 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 14:12:26 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:36:25 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,3 +105,4 @@ void	init_julia_param(t_fractol *fractol)
 		free(param_i);
 	}
 }
+
