@@ -6,11 +6,25 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:09:54 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 15:22:48 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:21:03 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	indicate_julia_example(void)
+{
+	write(STDOUT_FILENO, "-------------------------------\n", 32);
+	write(STDOUT_FILENO, "Julia needs 2 params between -2.0 and 2.0\n", 42);
+	write(STDOUT_FILENO, "For example\n", 12);
+	write(STDOUT_FILENO, "(real, imaginary)\n", 18);
+	write(STDOUT_FILENO, "(-0.8, 0.156)\n", 14);
+	write(STDOUT_FILENO, "(0.285, 0.01)\n", 14);
+	write(STDOUT_FILENO, "(-0.70176, -0.3842)\n", 20);
+	write(STDOUT_FILENO, "(-0.4, 0.6)\n", 12);
+	write(STDOUT_FILENO, "(0.355, 0.355)\n", 15);
+	write(STDOUT_FILENO, "-------------------------------\n", 32);
+}
 
 static int	is_valid_param(char *str)
 {

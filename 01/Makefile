@@ -9,7 +9,7 @@ MLXDIR = mlx
 # sources
 SRCS = main.c \
 	init_fractol_data.c init_julia.c init_mlx.c init_event.c \
-	handle_event.c render.c indicate_example.c \
+	handle_event.c render.c \
 	ft_utils.c get_next_line.c
 
 # objects/archives
