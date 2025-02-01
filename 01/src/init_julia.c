@@ -6,7 +6,7 @@
 /*   By: tssaito <tssaito@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:09:54 by tssaito           #+#    #+#             */
-/*   Updated: 2025/02/01 14:47:15 by tssaito          ###   ########.fr       */
+/*   Updated: 2025/02/01 15:22:48 by tssaito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	make_julia_coordinate(double *num)
 		if (is_valid_param(str) == SUCCESS)
 			*num = convert_params_to_double(str);
 		free(str);
-		if (-2.0 <= *num || *num <= 2.0)
+		if (-2.0 <= *num && *num <= 2.0)
 			break ;
 		else
 			write(STDERR_FILENO, "Error! Please retry again!\n", 27);
